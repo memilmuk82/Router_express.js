@@ -13,7 +13,6 @@ const path = require('path');
 // nunjucks 모듈 -> Nunjucks 템플릿 엔진 사용
 const nunjucks = require('nunjucks');
 
-
 dotenv.config(); // dotenv 설정파일 불러오기
 
 // 라우터 모듈 불러오기
@@ -89,7 +88,7 @@ app.use((err, req, res, next) => {
     res.locals.error = process.env.NODE_ENV !== 'production' ? err : {};
     // process.env.NODE_ENV -> 현재 실행 환경을 나타내는 Node.js의 환경 변수
     // 에러 객체를 'production'(배포) 환경이 아닌 경우(개발환경 또는 테스트 환경)에만 로컬 변수에 할당
-    // 'production'(배표) 환경에서는 빈 객체 할당 -> 보안 및 개인정보 강화(error.html의 error.stack 노출 차단)
+    // 'production'(배포) 환경에서는 빈 객체 할당 -> 보안 및 개인정보 강화(error.html의 error.stack 노출 차단)
     res.status(err.status || 500);
     // 응답 상태 코드를 에러 객체의 상태 코드 또는 500으로 설정
     res.render('error');
